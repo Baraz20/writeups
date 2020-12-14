@@ -106,6 +106,6 @@ Same as before I will look at the `users` table, like a so:
 ```
 And I get just a single entry which is the admin's password:
 
-![Admin password](./screenshots/admin_password)
+![Admin password](./screenshots/admin_password.png)
 
 And finaly the admin password is: `EhCNSWzzFP6sc7gB`
