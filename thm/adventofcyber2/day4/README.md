@@ -4,7 +4,7 @@
 
 --------
 
-For me the ip for the machine was:`10.10.115.208` it probably be diffrent for you.
+For me the ip for the machine was: `10.10.115.208` it'll probably be diffrent for you.
 
 ## Question 1
 No answer needed

