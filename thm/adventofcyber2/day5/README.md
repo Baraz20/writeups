@@ -79,7 +79,7 @@ I entered:
 @' UNION SELECT sql,1 FROM sqlite_master WHERE type='table' --
 ```
 and got this:
-![](/screenshots/table_names.png)
+![](./screenshots/table_names.png)
 
 so we can see there are 3 tables:
 - sequels: having a title, kid name, and age so we can understand that's the gift datebase on the website so nothing on intrest here.
