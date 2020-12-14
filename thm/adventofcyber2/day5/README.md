@@ -9,7 +9,7 @@ For me the ip for the machine was: `10.10.3.234` it'll probably be diffrent for 
 ## Question 1
 *Without using directory brute forcing, what's Santa's secret login panel?*
 
-after hading to `http://10.10.3.234:8000/` (like the text about suggested) and not seeing anything potentially vulnerable
+after hading to `http://10.10.3.234:8000/` (like the text above told us) and not seeing anything potentially vulnerable
 and after looking at the hint: *The name is derived out of 2 words from this question.*
 
 So I tried:
