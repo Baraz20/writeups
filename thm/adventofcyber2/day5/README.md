@@ -141,7 +141,7 @@ Same as before I will look at the `users` table, like a so:
 ```
 
 And so the query would something like this:
-```
+```sql
 SELECT gift,kid FROM table WHERE kid LIKE '@' UNION SELECT username,password FROM users --'
 ```
 And I get just a single entry which is the admin's password:
