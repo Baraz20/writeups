@@ -78,14 +78,34 @@ I entered:
 ```
 @' UNION SELECT sql,1 FROM sqlite_master WHERE type='table' --
 ```
+- Note: the `@` is not necessary but for a cleaner input I put a charecter that is not in the gifts database.
+
 and got this:
 
-![test](./screenshots/table_names.png)
+![Table names](./screenshots/table_names.png)
 
 so we can see there are 3 tables:
 - sequels: having a title, kid name, and age so we can understand that's the gift datebase on the website so nothing on intrest here.
 - hidden_table: as we are looking for the flag the the table has 1 colunm for flag we can assume it's in there
 - users: this might be useful for the sixth question when we are looking for the admin's password 
 
+so with a simple sql query I could see the contents of hidden_table:
+```
+@' UNION SELECT flag,1 FROM hidden_table --
+```
+![Flag](./screenshots/flag.png)
+
+And so the flag is: `thmfox{All_I_Want_for_Christmas_Is_You}`
+
 ## Question 6
 *What is admin's password?*
+
+Same as before I will look at the `users` table, like a so:
+```
+@' UNION SELECT username,password FROM users --
+```
+And I get just a single entry which is the admin's password:
+
+![Admin password](./screenshots/admin_password)
+
+And finaly the admin password is: `EhCNSWzzFP6sc7gB`
