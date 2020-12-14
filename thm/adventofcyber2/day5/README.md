@@ -80,7 +80,7 @@ sqlmap -p search -r req --tamper=space2comment --dbms sqlite --batch --dump-all
 Moving on I first tried to see if there are really only 2 columns like we can see in the website:
 
 First I Tried to assume how the query looks like:
-```
+```sql
 SELECT gift,kid FROM table WHERE kid LIKE '?'
 ```
 
