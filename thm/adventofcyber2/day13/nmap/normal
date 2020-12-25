@@ -1,0 +1,10 @@
+# Nmap 7.80 scan initiated Fri Dec 25 09:04:25 2020 as: nmap -oN nmap/normal 10.10.18.225
+Nmap scan report for 10.10.18.225
+Host is up (0.10s latency).
+Not shown: 997 closed ports
+PORT     STATE SERVICE
+80/tcp   open  http
+2222/tcp open  EtherNetIP-1
+3389/tcp open  ms-wbt-server
+
+# Nmap done at Fri Dec 25 09:04:43 2020 -- 1 IP address (1 host up) scanned in 18.41 seconds
