@@ -114,7 +114,7 @@ And got this:
 ![Table names](./screenshots/table_names.png)
 
 so we can see there are 3 tables:
-- sequels: having a title, kid name, and age so we can understand that's the gift datebase on the website so nothing on intrest here.
+- sequels: having a title, kid name, and age so we can understand that's the gift datebase on the website so nothing of intrest here.
 - hidden_table: as we are looking for the flag the the table has 1 colunm for flag we can assume it's in there
 - users: this might be useful for the sixth question when we are looking for the admin's password 
 
