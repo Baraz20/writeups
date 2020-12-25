@@ -1,0 +1,27 @@
+# Nmap 7.80 scan initiated Fri Dec 25 09:38:44 2020 as: nmap --script vuln -T4 -oN nmap/vuln_scan 10.10.18.225
+Nmap scan report for 10.10.18.225
+Host is up (0.10s latency).
+Not shown: 997 closed ports
+PORT     STATE SERVICE
+80/tcp   open  http
+|_clamav-exec: ERROR: Script execution failed (use -d to debug)
+|_http-csrf: Couldn't find any CSRF vulnerabilities.
+|_http-dombased-xss: Couldn't find any DOM based XSS.
+| http-enum: 
+|   /css/: Potentially interesting directory w/ listing on 'apache/2.4.29 (ubuntu)'
+|   /images/: Potentially interesting directory w/ listing on 'apache/2.4.29 (ubuntu)'
+|   /js/: Potentially interesting directory w/ listing on 'apache/2.4.29 (ubuntu)'
+|   /page/: Potentially interesting directory w/ listing on 'apache/2.4.29 (ubuntu)'
+|_  /src/: Potentially interesting directory w/ listing on 'apache/2.4.29 (ubuntu)'
+| http-internal-ip-disclosure: 
+|_  Internal IP Leaked: 10
+|_http-stored-xss: Couldn't find any stored XSS vulnerabilities.
+2222/tcp open  EtherNetIP-1
+|_clamav-exec: ERROR: Script execution failed (use -d to debug)
+3389/tcp open  ms-wbt-server
+|_clamav-exec: ERROR: Script execution failed (use -d to debug)
+|_rdp-vuln-ms12-020: ERROR: Script execution failed (use -d to debug)
+|_ssl-ccs-injection: No reply from server (TIMEOUT)
+|_sslv2-drown: 
+
+# Nmap done at Fri Dec 25 09:40:13 2020 -- 1 IP address (1 host up) scanned in 89.00 seconds
