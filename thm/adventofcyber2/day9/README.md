@@ -16,7 +16,7 @@ ftp 10.10.91.82
 
 running `ls` we get this:
 
-![FTP file listing](./imgaes/ftp_ls.png)
+![FTP file listing](./images/ftp_ls.png)
 
 as we can see everyone can access `public` indicated by `drwxrwxrwx` premmitons, so that's our answer: `public`
 
@@ -116,7 +116,7 @@ And after a minute or so, Jackpot we're in :P
 
 And so we can get `/root/flag.txt`
 
-![Flag](./images/flag.txt)
+![Flag](./images/flag.png)
 
 So our answer is of course:
 ```
