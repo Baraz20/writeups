@@ -1,4 +1,4 @@
-# Advent of cyber 2 | day 9 | Anyone can be Santa!
+# Advent of cyber 2 | day 10 | Anyone can be Santa!
 
 > Tal Baraz
 
